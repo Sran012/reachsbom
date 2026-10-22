@@ -1,0 +1,10 @@
+.tools/
+.venv/
+__pycache__/
+*.pyc
+target/
+results/work/
+results/cache/
+benchmarks/setC/repos/
+benchmarks/setB/downloads/
+paper/build/
