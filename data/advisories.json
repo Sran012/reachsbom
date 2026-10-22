@@ -1,0 +1,56 @@
+{
+  "CVE-2021-44228": {
+    "ghsa": "GHSA-jfh8-c2jp-5v3q",
+    "component": "pkg:maven/org.apache.logging.log4j/log4j-core",
+    "cvss": 10.0,
+    "fixed": "2.15.0",
+    "summary": "Log4Shell JNDI remote code execution",
+    "symbols": [
+      {
+        "class": "org.apache.logging.log4j.core.net.JndiManager",
+        "methods": [
+          "<org.apache.logging.log4j.core.net.JndiManager: java.lang.Object lookup(java.lang.String)>"
+        ]
+      },
+      {
+        "class": "org.apache.logging.log4j.core.lookup.JndiLookup",
+        "methods": [
+          "<org.apache.logging.log4j.core.lookup.JndiLookup: java.lang.String lookup(org.apache.logging.log4j.core.LogEvent,java.lang.String)>"
+        ]
+      }
+    ],
+    "source": "OSV GHSA-jfh8-c2jp-5v3q and the 2.15.0 fix commit"
+  },
+  "CVE-2022-42889": {
+    "ghsa": "GHSA-599f-7c49-w659",
+    "component": "pkg:maven/org.apache.commons/commons-text",
+    "cvss": 9.8,
+    "fixed": "1.10.0",
+    "summary": "Commons Text variable interpolation code execution",
+    "symbols": [
+      {
+        "class": "org.apache.commons.text.StringSubstitutor",
+        "methods": [
+          "<org.apache.commons.text.StringSubstitutor: java.lang.String replace(java.lang.String)>"
+        ]
+      }
+    ],
+    "source": "OSV GHSA-599f-7c49-w659 and the 1.10.0 release notes"
+  },
+  "CVE-2022-1471": {
+    "ghsa": "GHSA-mjmj-j48q-9wg2",
+    "component": "pkg:maven/org.yaml/snakeyaml",
+    "cvss": 8.3,
+    "fixed": "2.0",
+    "summary": "SnakeYAML Constructor deserialization remote code execution",
+    "symbols": [
+      {
+        "class": "org.yaml.snakeyaml.Yaml",
+        "methods": [
+          "<org.yaml.snakeyaml.Yaml: java.lang.Object load(java.lang.String)>"
+        ]
+      }
+    ],
+    "source": "OSV GHSA-mjmj-j48q-9wg2 and the 2.0 fix"
+  }
+}
