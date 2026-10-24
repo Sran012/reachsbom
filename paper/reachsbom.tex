@@ -339,7 +339,7 @@ Reviewer agreement & Single reviewer \\
 \end{tabular}
 \end{table}
 
-All four reachable Log4Shell findings occupy the top four ranks. The next six ranks are component-level advisories with no symbol map, so they are not confirmed; precision at 10 is therefore 0.40. The 99.1\% reduction is a filtering rate, not an independent false-positive estimate: 445 of 449 advisories are never promoted to a reachable method, and the four promoted findings are the ones a reviewer can act on first. The no-log JPA project keeps log4j-core at \textsc{ClassPresent}, which is correct for the seeded target but still a component-level alert.
+All four reachable Log4Shell findings occupy the top four ranks, so precision at 4 is 1.0. The next six ranks are component-level advisories with no symbol map, so they are not confirmed; precision at 10 is therefore 0.40. The 99.1\% reduction is a filtering rate, not an independent false-positive estimate: 445 of 449 advisories are never promoted to a reachable method, and the four promoted findings are the ones a reviewer can act on first. The no-log JPA project keeps log4j-core at \textsc{ClassPresent}, which is correct for the seeded target but still a component-level alert.
 
 \subsection{Overhead (RQ4)}
 Table~\ref{tab:overhead} lists the median cost of each stage.

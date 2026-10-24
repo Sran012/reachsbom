@@ -80,6 +80,10 @@ def main() -> int:
             else "not confirmed"
         )
     confirmed = sum(1 for item in top if item["review_label"] == "confirmed reachable")
+    top4 = records[:4]
+    confirmed4 = sum(
+        1 for item in top4 if item["review_label"] == "confirmed reachable"
+    )
     total_findings = sum(row["findings"] for row in rows)
     total_kept = sum(row["kept"] for row in rows)
     summary = {
@@ -92,6 +96,7 @@ def main() -> int:
         if total_findings
         else 0.0,
         "precision_at_10": round(confirmed / len(top), 4) if top else 0.0,
+        "precision_at_4": round(confirmed4 / len(top4), 4) if top4 else 0.0,
         "top_10_confirmed": confirmed,
         "reviewer": "single reviewer",
     }
