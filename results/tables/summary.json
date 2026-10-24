@@ -1,0 +1,171 @@
+{
+  "seta": {
+    "approaches": [
+      {
+        "name": "Syft with Grype",
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.75,
+        "tp": 18,
+        "fp": 12,
+        "fn": 0,
+        "tn": 0
+      },
+      {
+        "name": "Trivy",
+        "precision": 0.6667,
+        "recall": 1.0,
+        "f1": 0.8,
+        "tp": 18,
+        "fp": 9,
+        "fn": 0,
+        "tn": 3
+      },
+      {
+        "name": "Direct call-site query",
+        "precision": 0.6471,
+        "recall": 0.6111,
+        "f1": 0.6286,
+        "tp": 11,
+        "fp": 6,
+        "fn": 7,
+        "tn": 6
+      },
+      {
+        "name": "ReachSBOM without edge rules",
+        "precision": 1.0,
+        "recall": 0.8333,
+        "f1": 0.9091,
+        "tp": 15,
+        "fp": 0,
+        "fn": 3,
+        "tn": 12
+      },
+      {
+        "name": "ReachSBOM with CHA",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 18,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12
+      },
+      {
+        "name": "ReachSBOM (RTA, edge rules)",
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 18,
+        "fp": 0,
+        "fn": 0,
+        "tn": 12
+      }
+    ],
+    "per_pattern": {
+      "P1": {
+        "expected": "Present",
+        "correct": 3,
+        "total": 3
+      },
+      "P2": {
+        "expected": "ClassPresent",
+        "correct": 3,
+        "total": 3
+      },
+      "P3": {
+        "expected": "Reachable",
+        "correct": 3,
+        "total": 3
+      },
+      "P4": {
+        "expected": "Reachable",
+        "correct": 3,
+        "total": 3
+      },
+      "P5": {
+        "expected": "Reachable",
+        "correct": 3,
+        "total": 3
+      },
+      "P6": {
+        "expected": "Reachable",
+        "correct": 3,
+        "total": 3
+      },
+      "P7": {
+        "expected": "PossiblyReachable",
+        "correct": 3,
+        "total": 3
+      },
+      "P8": {
+        "expected": "ClassPresent",
+        "correct": 3,
+        "total": 3
+      },
+      "P9": {
+        "expected": "ClassPresent",
+        "correct": 3,
+        "total": 3
+      },
+      "P10": {
+        "expected": "Reachable",
+        "correct": 3,
+        "total": 3
+      }
+    },
+    "without_edge_rules_mismatches": [
+      "commons-p10",
+      "log4j-p10",
+      "snakeyaml-p10"
+    ]
+  },
+  "setb": {
+    "rta": {
+      "spring-log4shell": {
+        "status": "Reachable",
+        "expected": "Reachable",
+        "risk": 0.8
+      },
+      "spring-nolog": {
+        "status": "ClassPresent",
+        "expected": "ClassPresent",
+        "risk": 0.4
+      }
+    },
+    "cha": {
+      "spring-log4shell": {
+        "status": "Reachable",
+        "expected": "Reachable",
+        "risk": 0.8
+      },
+      "spring-nolog": {
+        "status": "Reachable",
+        "expected": "ClassPresent",
+        "risk": 0.8
+      }
+    }
+  },
+  "setc": {
+    "projects": 5,
+    "findings": 449,
+    "kept": 4,
+    "reachable": 4,
+    "possible": 0,
+    "filtering_rate": 0.9911,
+    "precision_at_10": 0.4,
+    "top_10_confirmed": 4,
+    "reviewer": "single reviewer"
+  },
+  "overhead": {
+    "sbom_seconds": 2.25,
+    "sbom_memory_mb": 194,
+    "advisory_seconds": 1.21,
+    "advisory_memory_mb": 29,
+    "callgraph_seconds_per_project": 20.6,
+    "callgraph_memory_mb": 3059,
+    "report_seconds": 0.06,
+    "report_memory_mb": 16,
+    "note": "Call graph runs as a batch of five projects; time is amortized and memory is the batch peak."
+  }
+}

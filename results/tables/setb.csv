@@ -1,0 +1,3 @@
+app,expected,target_status,target_risk,target_path,findings,kept,sbom_components
+spring-log4shell,Reachable,Reachable,0.8,"['<com.example.log4shell.SpringLog4shellApplication: void main(java.lang.String[])>', '<com.example.log4shell.LogController: java.lang.String index(java.lang.String)>', '<org.apache.logging.log4j.core.lookup.JndiLookup: java.lang.String lookup(org.apache.logging.log4j.core.LogEvent,java.lang.String)>', '<org.apache.logging.log4j.core.net.JndiManager: java.lang.Object lookup(java.lang.String)>']",121,1,33
+spring-nolog,ClassPresent,ClassPresent,0.4,[],121,0,33
