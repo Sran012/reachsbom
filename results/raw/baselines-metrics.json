@@ -1,0 +1,30 @@
+{
+  "grype": {
+    "tp": 18,
+    "fp": 12,
+    "fn": 0,
+    "tn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.75
+  },
+  "trivy": {
+    "tp": 18,
+    "fp": 9,
+    "fn": 0,
+    "tn": 3,
+    "precision": 0.6667,
+    "recall": 1.0,
+    "f1": 0.8
+  },
+  "direct_call": {
+    "tp": 11,
+    "fp": 6,
+    "fn": 7,
+    "tn": 6,
+    "precision": 0.6471,
+    "recall": 0.6111,
+    "f1": 0.6286
+  },
+  "positive_definition": "Reachable or PossiblyReachable"
+}

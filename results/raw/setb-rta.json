@@ -1,0 +1,47 @@
+[
+  {
+    "app": "spring-log4shell",
+    "algorithm": "rta",
+    "component_present": true,
+    "target_cve": "CVE-2021-44228",
+    "target_status": "Reachable",
+    "target_risk": 0.8,
+    "target_path": [
+      "<com.example.log4shell.SpringLog4shellApplication: void main(java.lang.String[])>",
+      "<com.example.log4shell.LogController: java.lang.String index(java.lang.String)>",
+      "<org.apache.logging.log4j.core.lookup.JndiLookup: java.lang.String lookup(org.apache.logging.log4j.core.LogEvent,java.lang.String)>",
+      "<org.apache.logging.log4j.core.net.JndiManager: java.lang.Object lookup(java.lang.String)>"
+    ],
+    "target_symbol": "<org.apache.logging.log4j.core.net.JndiManager: java.lang.Object lookup(java.lang.String)>",
+    "findings": 121,
+    "kept": 1,
+    "dynamic": false,
+    "reachable_methods": 11240,
+    "graph_edges": 2181580,
+    "sbom_components": 33,
+    "sbom_seconds": 4.5118505240006925,
+    "osv_seconds": 0.04507335500056797,
+    "expected": "Reachable",
+    "id": "spring-log4shell"
+  },
+  {
+    "app": "spring-nolog",
+    "algorithm": "rta",
+    "component_present": true,
+    "target_cve": "CVE-2021-44228",
+    "target_status": "ClassPresent",
+    "target_risk": 0.4,
+    "target_path": [],
+    "target_symbol": "<org.apache.logging.log4j.core.net.JndiManager: java.lang.Object lookup(java.lang.String)>",
+    "findings": 121,
+    "kept": 0,
+    "dynamic": false,
+    "reachable_methods": 11231,
+    "graph_edges": 2181580,
+    "sbom_components": 33,
+    "sbom_seconds": 11.909056225998938,
+    "osv_seconds": 0.04430448499988415,
+    "expected": "ClassPresent",
+    "id": "spring-nolog"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "projects": 5,
+  "findings": 449,
+  "kept": 4,
+  "reachable": 4,
+  "possible": 0,
+  "filtering_rate": 0.9911,
+  "precision_at_10": 0.4,
+  "top_10_confirmed": 4,
+  "reviewer": "single reviewer"
+}

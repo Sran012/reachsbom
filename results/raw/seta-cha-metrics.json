@@ -1,0 +1,74 @@
+{
+  "positive_reachable_or_possible": {
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "tn": 12,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "accuracy": 1.0
+  },
+  "positive_reachable_only": {
+    "tp": 15,
+    "fp": 0,
+    "fn": 0,
+    "tn": 15,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "accuracy": 1.0
+  },
+  "per_pattern": {
+    "P1": {
+      "expected": "Present",
+      "correct": 3,
+      "total": 3
+    },
+    "P2": {
+      "expected": "ClassPresent",
+      "correct": 3,
+      "total": 3
+    },
+    "P3": {
+      "expected": "Reachable",
+      "correct": 3,
+      "total": 3
+    },
+    "P4": {
+      "expected": "Reachable",
+      "correct": 3,
+      "total": 3
+    },
+    "P5": {
+      "expected": "Reachable",
+      "correct": 3,
+      "total": 3
+    },
+    "P6": {
+      "expected": "Reachable",
+      "correct": 3,
+      "total": 3
+    },
+    "P7": {
+      "expected": "PossiblyReachable",
+      "correct": 3,
+      "total": 3
+    },
+    "P8": {
+      "expected": "ClassPresent",
+      "correct": 3,
+      "total": 3
+    },
+    "P9": {
+      "expected": "ClassPresent",
+      "correct": 3,
+      "total": 3
+    },
+    "P10": {
+      "expected": "Reachable",
+      "correct": 3,
+      "total": 3
+    }
+  }
+}
