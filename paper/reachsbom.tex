@@ -314,7 +314,7 @@ Ghidra 10.0.4 & Confirmed & Confirmed & No & Stage 2 \\
 \end{tabular}
 \end{table}
 
-On \texttt{spring-log4shell}, both RTA and CHA return \textsc{Reachable}. On \texttt{spring-nolog}, RTA returns \textsc{ClassPresent} and CHA returns \textsc{Reachable}. The CHA path runs from Spring Boot startup logging through the log4j interceptor chain to \texttt{JndiLookup}, even though the application never logs request data. This is the false positive that the RTA instance filter and the application-scope edge rule remove. Solr and Ghidra reach Stage~2: the JARs contain \texttt{JndiLookup}, and Grype reports the target advisory in both SBOMs. Stage~3 is not analyzed because neither distribution is a Maven project.
+In Table~\ref{tab:setb}, ``No in the Stage~3 column means that the prior study did not confirm Stage~3; it does not mean that the project is safe. On \texttt{spring-log4shell}, both RTA and CHA return \textsc{Reachable}. On \texttt{spring-nolog}, RTA returns \textsc{ClassPresent} and CHA returns \textsc{Reachable}. The CHA path runs from Spring Boot startup logging through the log4j interceptor chain to \texttt{JndiLookup}, even though the application never logs request data. This is the false positive that the RTA instance filter and the application-scope edge rule remove. Solr and Ghidra reach Stage~2: the JARs contain \texttt{JndiLookup}, and Grype reports the target advisory in both SBOMs. Stage~3 is not analyzed because neither distribution is a Maven project.
 
 \subsection{Alert Reduction and Ranking on Set~C (RQ3)}
 Table~\ref{tab:setc} summarizes the effect of reachability filtering on the five-project corpus.
