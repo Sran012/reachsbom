@@ -149,7 +149,7 @@ The third stage decides whether application code can reach a vulnerable method. 
 
 \emph{Framework-aware edges.} Static call graphs miss calls that frameworks make on behalf of the application. Log4j~2, for example, resolves lookups through a plugin registry, so application code never names the lookup class that handles a logged string. ReachSBOM therefore reads a set of declarative edge rules. A rule states that a call to a given set of methods implies a call to another set, for example from the public logging methods to the lookup dispatch of the interpolator. Rules are plain files kept next to the symbol map, and each carries the advisory or documentation that justifies it. Calls through reflection with a constant class name are resolved directly. Calls with a non-constant target are recorded as unresolved so that they influence the verdict.
 
-\emph{Verdict.} For each vulnerable symbol the stage runs a path query and assigns one of the statuses in Table~\ref{tab:status}. A path that depends on an unresolved reflective call is reported as possibly reachable instead of reachable.
+\emph{Verdict.} For each vulnerable symbol the stage runs a path query and assigns one of the statuses in Table~\ref{tab:status}. If the application contains an unresolved reflective call, its verdicts are reported as possibly reachable instead of reachable.
 
 \begin{table}[t]
 \caption{Reachability statuses and the propagation stage each corresponds to.}
@@ -164,7 +164,7 @@ Status & Meaning & Stage \\
 \midrule
 Present & Component in dependency tree & 1 \\
 Class present & Vulnerable class found in the artifact, no path from an entry point & 2 \\
-Possibly reachable & Path exists only through an unresolved dynamic call & 3 \\
+Possibly reachable & Application has an unresolved dynamic call, so a path cannot be confirmed & 3 \\
 Reachable & Path from an entry point to the vulnerable method & 3 \\
 Taint confirmed & Attacker-controlled source reaches the sink & 4 \\
 \bottomrule
@@ -185,7 +185,7 @@ Algorithm~\ref{alg:verdict} summarizes the verdict computation.
 \ENDIF
 \FOR{each $m \in M$}
   \IF{$m \in G$ and a path $e \rightarrow m$ exists with $e \in E$}
-    \IF{the path contains an unresolved dynamic call}
+    \IF{the application has an unresolved dynamic call}
       \STATE $status \leftarrow$ \textsc{PossiblyReachable}
     \ELSE
       \STATE $status \leftarrow$ \textsc{Reachable}
