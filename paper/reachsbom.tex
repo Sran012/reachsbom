@@ -143,7 +143,7 @@ The stage also performs the Stage~2 check. It opens the JAR that carries the com
 \subsection{Reachability Analysis}
 The third stage decides whether application code can reach a vulnerable method. It has four parts.
 
-\emph{Entry points.} The analysis starts from the main methods of the application, the request-handling methods of servlets, and the handler methods that web frameworks register through annotations such as Spring's request mappings. For libraries, all public methods serve as entry points.
+\emph{Entry points.} The analysis starts from the main methods of the application, the request-handling methods that Spring registers through annotations such as \texttt{@GetMapping}, and the application runner methods that Spring Boot invokes. Library code becomes reachable only through calls from these entries.
 
 \emph{Call graph.} Soot builds a whole-program call graph over application classes and dependency JARs. The default algorithm is RTA for speed, and class hierarchy analysis is used as an ablation.
 
