@@ -1,0 +1,543 @@
+[
+  {
+    "id": "log4j-p1",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P1",
+    "expected": "Present",
+    "main_class": "seta.log4j.p1.App",
+    "app_dir": "log4j-p1",
+    "runtime_jars": [],
+    "sbom_jars": [
+      "log4j-p1/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p1/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p2",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P2",
+    "expected": "ClassPresent",
+    "main_class": "seta.log4j.p2.App",
+    "app_dir": "log4j-p2",
+    "runtime_jars": [
+      "log4j-p2/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p2/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p2/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p2/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p3",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P3",
+    "expected": "Reachable",
+    "main_class": "seta.log4j.p3.App",
+    "app_dir": "log4j-p3",
+    "runtime_jars": [
+      "log4j-p3/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p3/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p3/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p3/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p4",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P4",
+    "expected": "Reachable",
+    "main_class": "seta.log4j.p4.App",
+    "app_dir": "log4j-p4",
+    "runtime_jars": [
+      "log4j-p4/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p4/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p4/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p4/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p5",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P5",
+    "expected": "Reachable",
+    "main_class": "seta.log4j.p5.App",
+    "app_dir": "log4j-p5",
+    "runtime_jars": [
+      "log4j-p5/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p5/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p5/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p5/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p6",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P6",
+    "expected": "Reachable",
+    "main_class": "seta.log4j.p6.App",
+    "app_dir": "log4j-p6",
+    "runtime_jars": [
+      "log4j-p6/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p6/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p6/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p6/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p7",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P7",
+    "expected": "PossiblyReachable",
+    "main_class": "seta.log4j.p7.App",
+    "app_dir": "log4j-p7",
+    "runtime_jars": [
+      "log4j-p7/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p7/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p7/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p7/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p8",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P8",
+    "expected": "ClassPresent",
+    "main_class": "seta.log4j.p8.App",
+    "app_dir": "log4j-p8",
+    "runtime_jars": [
+      "log4j-p8/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p8/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p8/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p8/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p9",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P9",
+    "expected": "ClassPresent",
+    "main_class": "seta.log4j.p9.App",
+    "app_dir": "log4j-p9",
+    "runtime_jars": [
+      "log4j-p9/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p9/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p9/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p9/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "log4j-p10",
+    "library": "log4j-core",
+    "cve": "CVE-2021-44228",
+    "pattern": "P10",
+    "expected": "Reachable",
+    "main_class": "seta.log4j.p10.App",
+    "app_dir": "log4j-p10",
+    "runtime_jars": [
+      "log4j-p10/target/runtime-jars/log4j-core-2.14.1.jar",
+      "log4j-p10/target/runtime-jars/log4j-api-2.14.1.jar"
+    ],
+    "sbom_jars": [
+      "log4j-p10/target/sbom-jars/log4j-core-2.14.1.jar",
+      "log4j-p10/target/sbom-jars/log4j-api-2.14.1.jar"
+    ],
+    "edge_rules": [
+      {
+        "type": "method_map",
+        "sources": [
+          "<org.apache.logging.log4j.Logger: void error(java.lang.String)>",
+          "<org.apache.logging.log4j.Logger: void warn(java.lang.String)>",
+          "<org.apache.logging.log4j.Logger: void info(java.lang.String)>"
+        ],
+        "targets": [
+          "<org.apache.logging.log4j.core.lookup.JndiLookup: java.lang.String lookup(org.apache.logging.log4j.core.LogEvent,java.lang.String)>"
+        ],
+        "reason": "Log4j dispatches ${jndi:...} lookups through the plugin registry"
+      }
+    ]
+  },
+  {
+    "id": "commons-p1",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P1",
+    "expected": "Present",
+    "main_class": "seta.commons.p1.App",
+    "app_dir": "commons-p1",
+    "runtime_jars": [],
+    "sbom_jars": [
+      "commons-p1/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p1/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p2",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P2",
+    "expected": "ClassPresent",
+    "main_class": "seta.commons.p2.App",
+    "app_dir": "commons-p2",
+    "runtime_jars": [
+      "commons-p2/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p2/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p2/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p2/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p3",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P3",
+    "expected": "Reachable",
+    "main_class": "seta.commons.p3.App",
+    "app_dir": "commons-p3",
+    "runtime_jars": [
+      "commons-p3/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p3/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p3/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p3/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p4",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P4",
+    "expected": "Reachable",
+    "main_class": "seta.commons.p4.App",
+    "app_dir": "commons-p4",
+    "runtime_jars": [
+      "commons-p4/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p4/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p4/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p4/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p5",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P5",
+    "expected": "Reachable",
+    "main_class": "seta.commons.p5.App",
+    "app_dir": "commons-p5",
+    "runtime_jars": [
+      "commons-p5/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p5/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p5/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p5/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p6",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P6",
+    "expected": "Reachable",
+    "main_class": "seta.commons.p6.App",
+    "app_dir": "commons-p6",
+    "runtime_jars": [
+      "commons-p6/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p6/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p6/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p6/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p7",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P7",
+    "expected": "PossiblyReachable",
+    "main_class": "seta.commons.p7.App",
+    "app_dir": "commons-p7",
+    "runtime_jars": [
+      "commons-p7/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p7/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p7/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p7/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p8",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P8",
+    "expected": "ClassPresent",
+    "main_class": "seta.commons.p8.App",
+    "app_dir": "commons-p8",
+    "runtime_jars": [
+      "commons-p8/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p8/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p8/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p8/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p9",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P9",
+    "expected": "ClassPresent",
+    "main_class": "seta.commons.p9.App",
+    "app_dir": "commons-p9",
+    "runtime_jars": [
+      "commons-p9/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p9/target/runtime-jars/commons-lang3-3.11.jar"
+    ],
+    "sbom_jars": [
+      "commons-p9/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p9/target/sbom-jars/commons-lang3-3.11.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "commons-p10",
+    "library": "commons-text",
+    "cve": "CVE-2022-42889",
+    "pattern": "P10",
+    "expected": "Reachable",
+    "main_class": "seta.commons.p10.App",
+    "app_dir": "commons-p10",
+    "runtime_jars": [
+      "commons-p10/target/runtime-jars/commons-text-1.9.jar",
+      "commons-p10/target/runtime-jars/commons-lang3-3.11.jar",
+      "commons-p10/target/runtime-jars/seta-spi-1.0.jar"
+    ],
+    "sbom_jars": [
+      "commons-p10/target/sbom-jars/commons-text-1.9.jar",
+      "commons-p10/target/sbom-jars/commons-lang3-3.11.jar",
+      "commons-p10/target/sbom-jars/seta-spi-1.0.jar"
+    ],
+    "edge_rules": [
+      {
+        "type": "service_loader",
+        "interface": "seta.spi.Plugin",
+        "method": "run"
+      }
+    ]
+  },
+  {
+    "id": "snakeyaml-p1",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P1",
+    "expected": "Present",
+    "main_class": "seta.snakeyaml.p1.App",
+    "app_dir": "snakeyaml-p1",
+    "runtime_jars": [],
+    "sbom_jars": [
+      "snakeyaml-p1/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p2",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P2",
+    "expected": "ClassPresent",
+    "main_class": "seta.snakeyaml.p2.App",
+    "app_dir": "snakeyaml-p2",
+    "runtime_jars": [
+      "snakeyaml-p2/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p2/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p3",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P3",
+    "expected": "Reachable",
+    "main_class": "seta.snakeyaml.p3.App",
+    "app_dir": "snakeyaml-p3",
+    "runtime_jars": [
+      "snakeyaml-p3/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p3/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p4",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P4",
+    "expected": "Reachable",
+    "main_class": "seta.snakeyaml.p4.App",
+    "app_dir": "snakeyaml-p4",
+    "runtime_jars": [
+      "snakeyaml-p4/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p4/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p5",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P5",
+    "expected": "Reachable",
+    "main_class": "seta.snakeyaml.p5.App",
+    "app_dir": "snakeyaml-p5",
+    "runtime_jars": [
+      "snakeyaml-p5/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p5/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p6",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P6",
+    "expected": "Reachable",
+    "main_class": "seta.snakeyaml.p6.App",
+    "app_dir": "snakeyaml-p6",
+    "runtime_jars": [
+      "snakeyaml-p6/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p6/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p7",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P7",
+    "expected": "PossiblyReachable",
+    "main_class": "seta.snakeyaml.p7.App",
+    "app_dir": "snakeyaml-p7",
+    "runtime_jars": [
+      "snakeyaml-p7/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p7/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p8",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P8",
+    "expected": "ClassPresent",
+    "main_class": "seta.snakeyaml.p8.App",
+    "app_dir": "snakeyaml-p8",
+    "runtime_jars": [
+      "snakeyaml-p8/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p8/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p9",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P9",
+    "expected": "ClassPresent",
+    "main_class": "seta.snakeyaml.p9.App",
+    "app_dir": "snakeyaml-p9",
+    "runtime_jars": [
+      "snakeyaml-p9/target/runtime-jars/snakeyaml-1.33.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p9/target/sbom-jars/snakeyaml-1.33.jar"
+    ],
+    "edge_rules": []
+  },
+  {
+    "id": "snakeyaml-p10",
+    "library": "snakeyaml",
+    "cve": "CVE-2022-1471",
+    "pattern": "P10",
+    "expected": "Reachable",
+    "main_class": "seta.snakeyaml.p10.App",
+    "app_dir": "snakeyaml-p10",
+    "runtime_jars": [
+      "snakeyaml-p10/target/runtime-jars/snakeyaml-1.33.jar",
+      "snakeyaml-p10/target/runtime-jars/seta-spi-1.0.jar"
+    ],
+    "sbom_jars": [
+      "snakeyaml-p10/target/sbom-jars/snakeyaml-1.33.jar",
+      "snakeyaml-p10/target/sbom-jars/seta-spi-1.0.jar"
+    ],
+    "edge_rules": [
+      {
+        "type": "service_loader",
+        "interface": "seta.spi.Plugin",
+        "method": "run"
+      }
+    ]
+  }
+]

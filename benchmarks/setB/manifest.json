@@ -1,0 +1,35 @@
+{
+  "set": "B",
+  "description": "Spring Boot Log4Shell reachability case study. Both applications carry log4j-core 2.14.1 at runtime. Only spring-log4shell passes request input to a Log4j logger.",
+  "build": {
+    "java_home": ".tools/jdk17",
+    "maven": ".tools/maven/bin/mvn",
+    "command": "mvn -q -DskipTests package && mvn -q dependency:copy-dependencies -DincludeScope=compile -DoutputDirectory=target/sbom-jars && mvn -q dependency:copy-dependencies -DincludeScope=runtime -DoutputDirectory=target/runtime-jars"
+  },
+  "target": {
+    "cve": "CVE-2021-44228",
+    "artifact": "org.apache.logging.log4j:log4j-core",
+    "version": "2.14.1",
+    "class": "org.apache.logging.log4j.core.lookup.JndiLookup"
+  },
+  "apps": [
+    {
+      "name": "spring-log4shell",
+      "path": "benchmarks/setB/spring-log4shell",
+      "source": "local",
+      "framework": "spring-boot 2.5.0",
+      "logs_input": true,
+      "expected_status": "Reachable",
+      "note": "The controller logs the input request parameter with LogManager, so JndiLookup is reachable from the request path."
+    },
+    {
+      "name": "spring-nolog",
+      "path": "benchmarks/setB/spring-nolog",
+      "source": "local",
+      "framework": "spring-boot 2.5.0",
+      "logs_input": false,
+      "expected_status": "ClassPresent",
+      "note": "The controller accepts input but never logs. Plain CHA still reports JndiLookup as reachable, while RTA does not."
+    }
+  ]
+}

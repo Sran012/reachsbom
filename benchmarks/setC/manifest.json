@@ -1,0 +1,128 @@
+{
+  "set": "C",
+  "description": "Real Spring Guides projects prepared with log4j-core 2.14.1. The first three add a Log4j startup call; the last two do not.",
+  "preparation": {
+    "script": "evaluation/prepare_setc.py",
+    "spring_boot_version": "2.5.0",
+    "log4j_core_version": "2.14.1",
+    "build_command": "mvn -q -DskipTests -Dmaven.test.skip=true package"
+  },
+  "projects": [
+    {
+      "name": "gs-spring-boot",
+      "source_url": "https://github.com/spring-guides/gs-spring-boot.git",
+      "project_dir": "complete",
+      "app_path": "benchmarks/setC/apps/gs-spring-boot",
+      "logs": true,
+      "expected_note": "Spring Boot web app with an added Log4j startup call. log4j-core 2.14.1 is present in target/runtime-jars.",
+      "preparation_notes": [
+        "pinned Spring Boot parent/BOM to 2.5.0",
+        "spring-boot-starter-webmvc -> spring-boot-starter-web",
+        "spring-boot-starter-webmvc-test -> spring-boot-starter-test",
+        "added log4j-core 2.14.1 compile dependency",
+        "added Spring ApplicationRunner startup logger",
+        "added log4j2.xml with an INFO console appender"
+      ],
+      "build": {
+        "status": "built",
+        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "reason": null,
+        "runtime_log4j_core": [
+          "log4j-core-2.14.1.jar"
+        ]
+      }
+    },
+    {
+      "name": "gs-rest-service",
+      "source_url": "https://github.com/spring-guides/gs-rest-service.git",
+      "project_dir": "complete",
+      "app_path": "benchmarks/setC/apps/gs-rest-service",
+      "logs": true,
+      "expected_note": "Spring Boot REST app with an added Log4j startup call. log4j-core 2.14.1 is present in target/runtime-jars.",
+      "preparation_notes": [
+        "pinned Spring Boot parent/BOM to 2.5.0",
+        "spring-boot-starter-webmvc -> spring-boot-starter-web",
+        "spring-boot-starter-webmvc-test -> spring-boot-starter-test",
+        "added log4j-core 2.14.1 compile dependency",
+        "added Spring ApplicationRunner startup logger",
+        "added log4j2.xml with an INFO console appender"
+      ],
+      "build": {
+        "status": "built",
+        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "reason": null,
+        "runtime_log4j_core": [
+          "log4j-core-2.14.1.jar"
+        ]
+      }
+    },
+    {
+      "name": "gs-maven",
+      "source_url": "https://github.com/spring-guides/gs-maven.git",
+      "project_dir": "complete",
+      "app_path": "benchmarks/setC/apps/gs-maven",
+      "logs": true,
+      "expected_note": "Plain Maven application, not Spring Boot. A Log4j startup call is wired into the existing main method.",
+      "preparation_notes": [
+        "added log4j-core 2.14.1 compile dependency",
+        "wired StartupLogger into HelloWorld.main",
+        "added log4j2.xml with an INFO console appender"
+      ],
+      "build": {
+        "status": "built",
+        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "reason": null,
+        "runtime_log4j_core": [
+          "log4j-core-2.14.1.jar"
+        ]
+      }
+    },
+    {
+      "name": "gs-scheduling-tasks",
+      "source_url": "https://github.com/spring-guides/gs-scheduling-tasks.git",
+      "project_dir": ".",
+      "app_path": "benchmarks/setC/apps/gs-scheduling-tasks",
+      "logs": false,
+      "expected_note": "Upstream repository is Gradle only and has no Maven pom. No Log4j startup call is added, so a Maven build is not expected.",
+      "preparation_notes": [],
+      "build": {
+        "status": "not_built",
+        "command": null,
+        "reason": "no pom.xml; upstream project is Gradle only"
+      }
+    },
+    {
+      "name": "gs-consuming-rest",
+      "source_url": "https://github.com/spring-guides/gs-consuming-rest.git",
+      "project_dir": "complete",
+      "app_path": "benchmarks/setC/apps/gs-consuming-rest",
+      "logs": false,
+      "expected_note": "Uses the Spring Boot 4 RestClient API. No Log4j startup call is added; pinning to Spring Boot 2.5.0 is expected to break main source compilation.",
+      "preparation_notes": [
+        "pinned Spring Boot parent/BOM to 2.5.0",
+        "spring-boot-starter-restclient -> spring-boot-starter-web",
+        "spring-boot-starter-restclient-test -> spring-boot-starter-test",
+        "added log4j-core 2.14.1 compile dependency"
+      ],
+      "build": {
+        "status": "failed",
+        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "reason": "mvn package failed with exit code 1",
+        "output_tail": [
+          "[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project consuming-rest-complete: Compilation failure: Compilation failure: ",
+          "[ERROR] /home/sujal/reachsbom/benchmarks/setC/apps/gs-consuming-rest/src/main/java/com/example/consumingrest/ConsumingRestApplication.java:[11,38] cannot find symbol",
+          "[ERROR]   symbol:   class RestClient",
+          "[ERROR]   location: package org.springframework.web.client",
+          "[ERROR] /home/sujal/reachsbom/benchmarks/setC/apps/gs-consuming-rest/src/main/java/com/example/consumingrest/ConsumingRestApplication.java:[24,42] package RestClient does not exist",
+          "[ERROR] -> [Help 1]",
+          "[ERROR] ",
+          "[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.",
+          "[ERROR] Re-run Maven using the -X switch to enable full debug logging.",
+          "[ERROR] ",
+          "[ERROR] For more information about the errors and possible solutions, please read the following articles:",
+          "[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+        ]
+      }
+    }
+  ]
+}

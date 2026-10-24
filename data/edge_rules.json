@@ -2,15 +2,21 @@
   "log4j-shell": [
     {
       "type": "method_map",
-      "sources": [
-        "<org.apache.logging.log4j.Logger: void error(java.lang.String)>",
-        "<org.apache.logging.log4j.Logger: void warn(java.lang.String)>",
-        "<org.apache.logging.log4j.Logger: void info(java.lang.String)>"
+      "source_owner": "org.apache.logging.log4j.Logger",
+      "source_names": [
+        "error",
+        "warn",
+        "info",
+        "debug",
+        "trace",
+        "fatal"
       ],
+      "source_first_param": "java.lang.String",
       "targets": [
         "<org.apache.logging.log4j.core.lookup.JndiLookup: java.lang.String lookup(org.apache.logging.log4j.core.LogEvent,java.lang.String)>"
       ],
-      "reason": "Log4j dispatches ${jndi:...} lookups through the plugin registry"
+      "reason": "Application code logs a message through the Log4j API",
+      "scope": "app"
     }
   ]
 }

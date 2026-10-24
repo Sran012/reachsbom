@@ -8,3 +8,6 @@ results/cache/
 benchmarks/setC/repos/
 benchmarks/setB/downloads/
 paper/build/
+
+results/raw/
+benchmarks/setC/logs/

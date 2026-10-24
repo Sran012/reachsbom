@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.reachsbom.setA</groupId>
+  <artifactId>seta-parent</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>ReachSBOM Set A</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>8</maven.compiler.release>
+  </properties>
+
+  <modules>
+    <module>spi</module>
+    <module>log4j-p1</module>
+    <module>log4j-p2</module>
+    <module>log4j-p3</module>
+    <module>log4j-p4</module>
+    <module>log4j-p5</module>
+    <module>log4j-p6</module>
+    <module>log4j-p7</module>
+    <module>log4j-p8</module>
+    <module>log4j-p9</module>
+    <module>log4j-p10</module>
+    <module>commons-p1</module>
+    <module>commons-p2</module>
+    <module>commons-p3</module>
+    <module>commons-p4</module>
+    <module>commons-p5</module>
+    <module>commons-p6</module>
+    <module>commons-p7</module>
+    <module>commons-p8</module>
+    <module>commons-p9</module>
+    <module>commons-p10</module>
+    <module>snakeyaml-p1</module>
+    <module>snakeyaml-p2</module>
+    <module>snakeyaml-p3</module>
+    <module>snakeyaml-p4</module>
+    <module>snakeyaml-p5</module>
+    <module>snakeyaml-p6</module>
+    <module>snakeyaml-p7</module>
+    <module>snakeyaml-p8</module>
+    <module>snakeyaml-p9</module>
+    <module>snakeyaml-p10</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.14.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-text</artifactId>
+        <version>1.9</version>
+      </dependency>
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>1.33</version>
+      </dependency>
+      <dependency>
+        <groupId>io.reachsbom.setA</groupId>
+        <artifactId>seta-spi</artifactId>
+        <version>1.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.2.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.7.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
