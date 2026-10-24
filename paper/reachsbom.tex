@@ -136,7 +136,7 @@ The first stage resolves the dependency tree and emits a CycloneDX SBOM with Syf
 \subsection{Advisory Mapping and Vulnerable Symbols}
 For each component the second stage queries OSV.dev by package URL and version. Records that describe the same flaw are merged through their aliases (CVE and GHSA identifiers), and the affected version ranges are checked against the resolved version. The CVSS vector in the advisory supplies the severity value $S(v)$.
 
-Reachability needs a target method, and advisories rarely name one. ReachSBOM therefore reads vulnerable symbols from a symbol file that lists, for each advisory, the classes and methods that contain the flaw. Entries for the libraries in the evaluation are written by hand from the fix commit and the advisory text, and each entry cites its source. A vulnerability with no entry falls back to component-level reachability, described below.
+Reachability needs a target method, and advisories rarely name one. ReachSBOM therefore reads vulnerable symbols from a symbol file that lists, for each advisory, the classes and methods that contain the flaw. Entries for the libraries in the evaluation are written by hand from the fix commit and the advisory text, and each entry cites its source. A vulnerability with no entry falls back to a component-level verdict, described below, which records the component but not a method path.
 
 The stage also performs the Stage~2 check. It opens the JAR that carries the component and tests whether the class entries that contain the vulnerable symbols exist and have not been removed.
 
@@ -164,7 +164,7 @@ Status & Meaning & Stage \\
 \midrule
 Present & Component in dependency tree & 1 \\
 Class present & Vulnerable class found in the artifact, no path from an entry point & 2 \\
-Possibly reachable & Path exists only through an unresolved dynamic call, or only the component level could be checked & 3 \\
+Possibly reachable & Path exists only through an unresolved dynamic call & 3 \\
 Reachable & Path from an entry point to the vulnerable method & 3 \\
 Taint confirmed & Attacker-controlled source reaches the sink & 4 \\
 \bottomrule
@@ -181,7 +181,7 @@ Algorithm~\ref{alg:verdict} summarizes the verdict computation.
 \REQUIRE call graph $G$, entry points $E$, vulnerable symbols $M$, edge rules $R$
 \STATE $G \leftarrow \mathrm{apply}(R, G)$
 \IF{$M = \emptyset$}
-  \RETURN \textsc{PossiblyReachable} if any application method reaches the artifact, else \textsc{ClassPresent}
+  \RETURN \textsc{ClassPresent}
 \ENDIF
 \FOR{each $m \in M$}
   \IF{$m \in G$ and a path $e \rightarrow m$ exists with $e \in E$}
@@ -368,7 +368,7 @@ The call graph dominates cost. The five-project batch needs 103~s of wall time a
 \section{Discussion and Limitations}\label{sec:discussion}
 The verdicts of ReachSBOM are only as sound as its call graph. Static analysis over-approximates virtual dispatch and under-approximates reflection, dependency injection, and runtime configuration. The framework-aware rules reduce the second problem for the frameworks they cover and do nothing for the rest, so the rule set needs continued maintenance, and each rule needs a reference that a reviewer can check. A Possibly reachable verdict is meant to keep such cases visible instead of silently dropping them.
 
-Symbol resolution is the second limit. Advisories rarely name vulnerable methods, and a method list taken from a fix commit can include refactoring changes that are unrelated to the flaw. A wrong symbol list yields a wrong verdict, so the report shows the symbols used. Where no symbol can be found the pipeline falls back to component-level reachability, which is weaker than the method-level verdict.
+Symbol resolution is the second limit. Advisories rarely name vulnerable methods, and a method list taken from a fix commit can include refactoring changes that are unrelated to the flaw. A wrong symbol list yields a wrong verdict, so the report shows the symbols used. Where no symbol can be found the pipeline falls back to \textsc{ClassPresent}, which is weaker than the method-level verdict and is not counted as reachable.
 
 Reachability is also not exploitability. A reachable method still needs attacker-controlled input and a suitable configuration before it can be exploited, which is why Stage~4 exists in the model of~\cite{grgic} and why ReachSBOM leaves it as a plug-in interface in this version.
 
