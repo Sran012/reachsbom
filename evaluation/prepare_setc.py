@@ -40,6 +40,7 @@ XSI_NS = "http://www.w3.org/2001/XMLSchema-instance"
 # names, so map the main runtime and test starters before building.
 STARTER_COMPAT = {
     "spring-boot-starter-webmvc": "spring-boot-starter-web",
+    "spring-boot-starter-data-jpa-test": "spring-boot-starter-test",
     "spring-boot-starter-webmvc-test": "spring-boot-starter-test",
     "spring-boot-starter-restclient": "spring-boot-starter-web",
     "spring-boot-starter-restclient-test": "spring-boot-starter-test",
@@ -80,26 +81,25 @@ PROJECTS = [
         ),
     },
     {
-        "name": "gs-scheduling-tasks",
-        "source_url": "https://github.com/spring-guides/gs-scheduling-tasks.git",
-        "project_dir": ".",
-        "package": "com.example.schedulingtasks",
-        "logs": False,
+        "name": "gs-validating-form-input",
+        "source_url": "https://github.com/spring-guides/gs-validating-form-input.git",
+        "project_dir": "complete",
+        "package": "com.example.validatingforminput",
+        "logs": True,
         "expected_note": (
-            "Upstream repository is Gradle only and has no Maven pom. No "
-            "Log4j startup call is added, so a Maven build is not expected."
+            "Spring Boot form validation app with an added Log4j startup call. "
+            "log4j-core 2.14.1 is present in target/runtime-jars."
         ),
     },
     {
-        "name": "gs-consuming-rest",
-        "source_url": "https://github.com/spring-guides/gs-consuming-rest.git",
+        "name": "gs-accessing-data-jpa",
+        "source_url": "https://github.com/spring-guides/gs-accessing-data-jpa.git",
         "project_dir": "complete",
-        "package": "com.example.consumingrest",
+        "package": "com.example.accessingdatajpa",
         "logs": False,
         "expected_note": (
-            "Uses the Spring Boot 4 RestClient API. No Log4j startup call is "
-            "added; pinning to Spring Boot 2.5.0 is expected to break main "
-            "source compilation."
+            "Spring Boot JPA app. log4j-core 2.14.1 is present but the "
+            "application does not log through Log4j."
         ),
     },
 ]
@@ -163,6 +163,10 @@ def map_boot_starters(root: ET.Element, namespace: str) -> list[str]:
         artifact = child(dependency, "artifactId", namespace)
         if artifact is None or not artifact.text:
             continue
+        if artifact.text.strip() == "spring-boot-starter-data-jpa-test":
+            changes.append("removed spring-boot-starter-data-jpa-test")
+            dependencies.remove(dependency)
+            continue
         replacement = STARTER_COMPAT.get(artifact.text.strip())
         if replacement:
             changes.append("%s -> %s" % (artifact.text.strip(), replacement))
@@ -220,6 +224,24 @@ def patch_pom(pom: Path) -> list[str]:
     ET.indent(tree, space="  ")
     tree.write(pom, encoding="UTF-8", xml_declaration=True)
     return notes
+
+
+def fix_jakarta_imports(app: Path) -> int:
+    changed = 0
+    for path in (app / "src" / "main" / "java").rglob("*.java"):
+        text = path.read_text(encoding="utf-8")
+        updated = text
+        for old, new in (
+            ("jakarta.validation", "javax.validation"),
+            ("jakarta.persistence", "javax.persistence"),
+            ("jakarta.annotation", "javax.annotation"),
+            ("jakarta.servlet", "javax.servlet"),
+        ):
+            updated = updated.replace(old, new)
+        if updated != text:
+            path.write_text(updated, encoding="utf-8")
+            changed += 1
+    return changed
 
 
 def write_boot_logger(app: Path, package: str, name: str) -> None:
@@ -435,6 +457,9 @@ def main() -> int:
         app = copy_project(definition)
         notes = []
         pom = app / "pom.xml"
+        fixed = fix_jakarta_imports(app)
+        if fixed:
+            notes.append("mapped jakarta.validation imports to javax.validation")
         if pom.exists():
             notes.extend(patch_pom(pom))
         if definition["logs"]:

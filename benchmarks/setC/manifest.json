@@ -25,7 +25,7 @@
       ],
       "build": {
         "status": "built",
-        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "command": ".tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
         "reason": null,
         "runtime_log4j_core": [
           "log4j-core-2.14.1.jar"
@@ -49,7 +49,7 @@
       ],
       "build": {
         "status": "built",
-        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "command": ".tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
         "reason": null,
         "runtime_log4j_core": [
           "log4j-core-2.14.1.jar"
@@ -70,7 +70,7 @@
       ],
       "build": {
         "status": "built",
-        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "command": ".tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
         "reason": null,
         "runtime_log4j_core": [
           "log4j-core-2.14.1.jar"
@@ -78,49 +78,47 @@
       }
     },
     {
-      "name": "gs-scheduling-tasks",
-      "source_url": "https://github.com/spring-guides/gs-scheduling-tasks.git",
-      "project_dir": ".",
-      "app_path": "benchmarks/setC/apps/gs-scheduling-tasks",
-      "logs": false,
-      "expected_note": "Upstream repository is Gradle only and has no Maven pom. No Log4j startup call is added, so a Maven build is not expected.",
-      "preparation_notes": [],
+      "name": "gs-validating-form-input",
+      "source_url": "https://github.com/spring-guides/gs-validating-form-input.git",
+      "project_dir": "complete",
+      "app_path": "benchmarks/setC/apps/gs-validating-form-input",
+      "logs": true,
+      "expected_note": "Spring Boot form validation app with an added Log4j startup call. log4j-core 2.14.1 is present in target/runtime-jars.",
+      "preparation_notes": [
+        "mapped jakarta.validation imports to javax.validation",
+        "pinned Spring Boot parent/BOM to 2.5.0",
+        "added log4j-core 2.14.1 compile dependency",
+        "added Spring ApplicationRunner startup logger",
+        "added log4j2.xml with an INFO console appender"
+      ],
       "build": {
-        "status": "not_built",
-        "command": null,
-        "reason": "no pom.xml; upstream project is Gradle only"
+        "status": "built",
+        "command": ".tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "reason": null,
+        "runtime_log4j_core": [
+          "log4j-core-2.14.1.jar"
+        ]
       }
     },
     {
-      "name": "gs-consuming-rest",
-      "source_url": "https://github.com/spring-guides/gs-consuming-rest.git",
+      "name": "gs-accessing-data-jpa",
+      "source_url": "https://github.com/spring-guides/gs-accessing-data-jpa.git",
       "project_dir": "complete",
-      "app_path": "benchmarks/setC/apps/gs-consuming-rest",
+      "app_path": "benchmarks/setC/apps/gs-accessing-data-jpa",
       "logs": false,
-      "expected_note": "Uses the Spring Boot 4 RestClient API. No Log4j startup call is added; pinning to Spring Boot 2.5.0 is expected to break main source compilation.",
+      "expected_note": "Spring Boot JPA app. log4j-core 2.14.1 is present but the application does not log through Log4j.",
       "preparation_notes": [
+        "mapped jakarta.validation imports to javax.validation",
         "pinned Spring Boot parent/BOM to 2.5.0",
-        "spring-boot-starter-restclient -> spring-boot-starter-web",
-        "spring-boot-starter-restclient-test -> spring-boot-starter-test",
+        "removed spring-boot-starter-data-jpa-test",
         "added log4j-core 2.14.1 compile dependency"
       ],
       "build": {
-        "status": "failed",
-        "command": "/home/sujal/reachsbom/.tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
-        "reason": "mvn package failed with exit code 1",
-        "output_tail": [
-          "[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project consuming-rest-complete: Compilation failure: Compilation failure: ",
-          "[ERROR] /home/sujal/reachsbom/benchmarks/setC/apps/gs-consuming-rest/src/main/java/com/example/consumingrest/ConsumingRestApplication.java:[11,38] cannot find symbol",
-          "[ERROR]   symbol:   class RestClient",
-          "[ERROR]   location: package org.springframework.web.client",
-          "[ERROR] /home/sujal/reachsbom/benchmarks/setC/apps/gs-consuming-rest/src/main/java/com/example/consumingrest/ConsumingRestApplication.java:[24,42] package RestClient does not exist",
-          "[ERROR] -> [Help 1]",
-          "[ERROR] ",
-          "[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.",
-          "[ERROR] Re-run Maven using the -X switch to enable full debug logging.",
-          "[ERROR] ",
-          "[ERROR] For more information about the errors and possible solutions, please read the following articles:",
-          "[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+        "status": "built",
+        "command": ".tools/maven/bin/mvn -q -DskipTests -Dmaven.test.skip=true package",
+        "reason": null,
+        "runtime_log4j_core": [
+          "log4j-core-2.14.1.jar"
         ]
       }
     }
