@@ -138,7 +138,7 @@ public final class Analyzer {
                     continue;
                 }
                 for (SootMethod method : candidate.getMethods()) {
-                    if (isHttpHandler(method)) {
+                    if (isHttpHandler(method) || isFrameworkEntry(method)) {
                         app.roots.add(method);
                         entries.add(method);
                     }
@@ -154,7 +154,7 @@ public final class Analyzer {
 
         for (AppSpec app : apps) {
             long appStarted = System.currentTimeMillis();
-            BfsResult cha = bfsCha(app.entry, callGraph);
+            BfsResult cha = bfsCha(app.entry, callGraph, Collections.emptyMap());
             Set<SootClass> instantiated = instantiatedClasses(cha.seen);
 
             Map<SootMethod, List<ExtraEdge>> extras = new HashMap<>();
@@ -181,7 +181,7 @@ public final class Analyzer {
 
             BfsResult reachable;
             if ("cha".equalsIgnoreCase(algorithm)) {
-                reachable = bfsCha(app.entry, callGraph);
+                reachable = bfsCha(app.entry, callGraph, extras);
             } else {
                 reachable = bfsRta(app.entry, callGraph, instantiated, extras);
             }
@@ -292,13 +292,21 @@ public final class Analyzer {
         }
     }
 
-    private static BfsResult bfsCha(SootMethod entry, CallGraph graph) {
+    private static BfsResult bfsCha(SootMethod entry, CallGraph graph,
+                                    Map<SootMethod, List<ExtraEdge>> extras) {
         BfsResult result = new BfsResult(entry);
         ArrayDeque<SootMethod> queue = new ArrayDeque<>();
         result.seen.add(entry);
         queue.add(entry);
         while (!queue.isEmpty()) {
             SootMethod current = queue.poll();
+            for (ExtraEdge extra : extras.getOrDefault(current, Collections.emptyList())) {
+                if (extra.target != null && result.seen.add(extra.target)) {
+                    result.parent.put(extra.target, current);
+                    result.via.put(extra.target, extra.kind);
+                    queue.add(extra.target);
+                }
+            }
             if (isJdk(current.getDeclaringClass().getName())) {
                 continue;
             }
@@ -487,6 +495,36 @@ public final class Analyzer {
             return false;
         }
         return true;
+    }
+
+    private static boolean isFrameworkEntry(SootMethod method) {
+        if (!"run".equals(method.getName()) || method.getParameterCount() != 1) {
+            return false;
+        }
+        return implementsType(method.getDeclaringClass(), "org.springframework.boot.ApplicationRunner")
+                || implementsType(method.getDeclaringClass(), "org.springframework.boot.CommandLineRunner");
+    }
+
+    private static boolean implementsType(SootClass start, String target) {
+        ArrayDeque<SootClass> queue = new ArrayDeque<>();
+        Set<String> seen = new HashSet<>();
+        queue.add(start);
+        while (!queue.isEmpty()) {
+            SootClass current = queue.poll();
+            if (current == null || !seen.add(current.getName())) {
+                continue;
+            }
+            if (current.getName().equals(target)) {
+                return true;
+            }
+            for (SootClass iface : current.getInterfaces()) {
+                queue.add(iface);
+            }
+            if (current.hasSuperclass()) {
+                queue.add(current.getSuperclass());
+            }
+        }
+        return false;
     }
 
     private static boolean isHttpHandler(SootMethod method) {
