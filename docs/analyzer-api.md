@@ -26,9 +26,12 @@ The Python orchestrator writes one request JSON file and calls the Java analyzer
           "edge_rules": [
             {
               "type": "method_map",
-              "sources": ["<org.apache.logging.log4j.Logger: void error(java.lang.String)>"],
+              "source_owner": "org.apache.logging.log4j.Logger",
+              "source_names": ["error", "warn", "info", "debug", "trace", "fatal"],
+              "source_first_param": "java.lang.String",
               "targets": ["<org.apache.logging.log4j.core.lookup.JndiLookup: java.lang.String lookup(org.apache.logging.log4j.core.LogEvent,java.lang.String)>"],
-              "reason": "Log4j plugin lookup dispatch"
+              "reason": "Application code logs through the Log4j API",
+              "scope": "app"
             }
           ],
           "reflection": true
@@ -38,6 +41,15 @@ The Python orchestrator writes one request JSON file and calls the Java analyzer
 
 All apps in one request share one Soot Scene. App class directories are
 different. Runtime jars are the union for the batch.
+
+A `method_map` rule can list exact `sources` or match overloads with
+`source_owner`, `source_names`, and `source_first_param`. With `"scope": "app"`,
+RTA adds an edge from the application method that makes the call. This keeps
+framework-internal logging from triggering the Log4j rule. The CHA ablation
+applies the same rule to every matching method, which is how the Spring Boot
+false positive is produced. A `service_loader` rule takes an interface name and
+a provider method name. The analyzer follows provider classes listed in
+`META-INF/services`.
 
 ## Response
 
