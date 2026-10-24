@@ -377,7 +377,7 @@ The current prototype targets Java projects built with Maven. Soot does not cove
 \section{Conclusion and Future Work}\label{sec:conclusion}
 Version-based matching tells developers which vulnerable components they ship, and it cannot tell them which ones can run. Building on the propagation model of Grgic et al.~\cite{grgic}, ReachSBOM connects SBOM generation, advisory mapping, and call-graph reachability in one command-line tool, adds framework-aware edge rules, and ranks findings with a stage-aware score. The evaluation compares it with the tools studied in~\cite{grgic} on a seeded benchmark, on the Log4Shell projects, and on five real Maven projects. Future work includes Stage~4 taint confirmation and reachability analysis for other ecosystems such as JavaScript and Python.
 
-\emph{Data availability.} The source code, symbol files, edge rules, and benchmark applications will be made freely available in a public repository.
+\emph{Data availability.} The source code, symbol files, edge rules, benchmark applications, and result tables are available at \url{https://github.com/Sran012/reachsbom}.
 
 \begin{thebibliography}{1}
 \bibitem{grgic} L.~Grgic, L.~Maksimovic, and P.~Laskov, ``Propagation model for SSC attacks: Why SBOM (tools) don't tell the whole truth,'' University of Liechtenstein, 2026.

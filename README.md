@@ -6,9 +6,10 @@ builds a Soot call graph, and reports whether each vulnerable method can be
 reached from an application entry point. Findings are ranked with a stage-aware
 score that combines CVSS severity and reachability.
 
-The repository contains the tool, the seeded benchmark, the Spring Boot
-Log4Shell case study, five real Spring Guides projects, the experiment scripts,
-and the result tables used in the paper.
+The repository is at <https://github.com/Sran012/reachsbom>. It contains the
+tool, the seeded benchmark, the Spring Boot Log4Shell case study, five real
+Spring Guides projects, the experiment scripts, and the result tables used in
+the paper.
 
 ## Requirements
 
